@@ -1,0 +1,38 @@
+@model Dish
+
+<div class="jumbotron text-center">
+
+    <h1 class="display-4">Add a new Dish!</h1>
+    <div class="text-left">
+        <form class="col-6" action="/createdish" method="post">
+            <div class="form-group">
+                <label asp-for="DishName">Name of Dish:</label>
+                <input asp-for="DishName" class="form-control">
+                <span class="text-danger" asp-validation-for="DishName"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Calories"># of Calories:</label>
+                <input asp-for="Calories" class="form-control">
+                <span class="text-danger" asp-validation-for="Calories"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tastiness">Tastiness:</label>
+                <select asp-for="Tastiness" class="form-control">
+                <span class="text-danger" asp-validation-for="Tastiness"></span>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description">Description:</label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="Description"></span>
+            </div>
+            <input class="btn btn-info" type="submit" value="Add Dish">
+        </form>
+    </div>
+
+</div>

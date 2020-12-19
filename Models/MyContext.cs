@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using ChefsNDishes.Models;
+using Microsoft.EntityFrameworkCore;
+
+namespace ChefsNDishes.Models
+{
+    public class MyContext : DbContext
+    {
+        public MyContext(DbContextOptions options) : base(options) { }
+
+        public DbSet<Chef> Chefs { get; set; }
+
+        public DbSet<Dish> Dishes { get; set; }
+    }
+}

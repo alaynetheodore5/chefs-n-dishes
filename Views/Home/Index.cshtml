@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model Chef
+
+<div class="col-sm-6">
+    <h3>Check out our roster of Chefs!</h3>
+    <table class="table table-striped">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Number of Dishes</th>
+        </tr>
+        @foreach(var c in ViewBag.Chefs)
+        {
+            <tr>
+                <td>@c.FirstName</td>
+                <td>@c.LastName</td>
+                <td>@c.Age()</td>
+                <td>@c.CreatedDishes.Count</td>
+            </tr>
+        }
+    </table>
+</div>
+<br>
+<div class="card col-sm-6">
+    <legend>Register New Chef:</legend>
+    <form action="/register" method="post">
+        <div class="form-group">
+            <label asp-for="FirstName">First Name:</label>
+            <input asp-for="FirstName" class="form-control">
+            <span class="text-danger" asp-validation-for="FirstName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName">Last Name:</label>
+            <input asp-for="LastName" class="form-control">
+            <span class="text-danger" asp-validation-for="LastName"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Birthday">Birthday:</label>
+            <input asp-for="Birthday" class="form-control">
+            <span class="text-danger" asp-validation-for="Birthday"></span>
+        </div>
+        <input type="submit" value="Add Chef" class="btn btn-info">
+    </form>
+</div>
+
+<div class="card">
+    <form action="/login" method="post">
+            <legend>Login:</legend>
+            <div class="form-group">
+                <label >Chef:</label>
+                <select name="ChefId" class="form-control">
+                    @foreach(Chef c in ViewBag.Chefs)
+                    {
+                        <option value="@c.ChefId">@c.FirstName</option>
+                    }
+                </select>
+            </div>
+            <input type="submit" value="Login" class="btn btn-success">
+    </form>
+</div>

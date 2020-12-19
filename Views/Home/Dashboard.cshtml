@@ -1,0 +1,20 @@
+@model Chef
+
+<h1>Welcome @Model.FirstName!!!</h1>
+<a href="/logout" class="btn btn-info">Logout</a>
+<a href="/newdish" class="btn btn-warning">Create a New Dish</a>
+
+<div class="row">
+    @foreach( Dish d in Model.CreatedDishes )
+    {
+        <div class="card col-sm-4">
+            <div class="card-header">
+                <h2 class="card-title">@d.DishName</h2>
+            </div>
+            <p>Description: @d.Description</p>
+            <p>Tastiness: @d.Tastiness</p>
+            <p>Calories: @d.Calories</p>
+        </div>
+    }
+
+</div>
